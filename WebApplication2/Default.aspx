@@ -1,4 +1,4 @@
-﻿<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="Default.aspx.cs" Inherits="WebApplication2.WebForm1" %>
+﻿<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="Default.aspx.cs" Inherits="WebApplication2.WebForm1" Async="true" %>
 
 <!DOCTYPE html>
 
@@ -11,6 +11,7 @@
         <div>
             Hello
         </div>
+        <asp:Button ID="Button1" runat="server" Text="Download PDF" OnClick="Button1_Click" />
     </form>
 </body>
 </html>
