@@ -32,9 +32,25 @@ namespace WebApplication2
         {
             public string Name { get; set; }
             public long Price { get; set; }
-        } 
+        }
+
+        List<DetailsModel> details_list = new List<DetailsModel>();
+        List<PayModel> basepay_list = new List<PayModel>();
+        List<PayModel> addition_list = new List<PayModel>();
+        List<PayModel> deduction_list = new List<PayModel>();
         protected async void Button1_Click(object sender, EventArgs e)
         {
+           
+            for (int i = 0; i < 2; i++)
+            {
+                PayModel paymodel = new PayModel()
+                {
+                    Name = "Petrol Claim",
+                    Price = 10
+                };
+                addition_list.Add(paymodel);
+            }
+
             var rs = new LocalReporting()
                         .UseBinary(JsReportBinary.GetBinary())
                         .Configure(cfg => cfg.FileSystemStore().BaseUrlAsWorkingDirectory())
@@ -65,19 +81,7 @@ namespace WebApplication2
                         Price = 400
                     },
                 },
-                additions = new List<PayModel>()
-                {
-                    new PayModel()
-                    {
-                        Name = "Petrol Claim",
-                        Price = 0
-                    },
-                    new PayModel()
-                    {
-                        Name = "Monthly Allowance",
-                        Price = 400
-                    }
-                },
+                additions = addition_list,
                 basepay = new List<PayModel>()
                 {
                     new PayModel()
